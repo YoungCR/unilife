@@ -1,16 +1,15 @@
 import React from 'react';
 import './Header.css';
 import { AiOutlineHeart, AiOutlineMail } from 'react-icons/ai';
-import { BsHouseDoor } from 'react-icons/bs';
+import logo from '../../assets/logo.png';
+import logoText from '../../assets/unilife.png';
 
 function Header() {
   return (
     <nav>
       <div className="nav-left">
-        <BsHouseDoor className="logo" />
-        <a href="./" className="logo-text">
-          UniLife
-        </a>
+        <img src={logo} alt="UniLife Logo" />
+        <img src={logoText} alt="UniLife Text" />
       </div>
       <div className="nav-right">
         <div className="link-container">

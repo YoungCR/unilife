@@ -10,7 +10,7 @@
 :root{
     --blue: #00A2E1;
     --purple: #3A5295;
-    --grey: rgb(255, 255, 255, 0.6);
+    --grey: #CED3D8;
     --background-color: #E5E5E5;
     --white: #FFF;
     --black: #000000;
@@ -25,4 +25,21 @@ a{
 
 body{
     background-color:var(--background-color);
+}
+
+select {
+    background: var(--white);
+    border: 1px solid var(--grey);
+    border-radius: 12px;
+}
+
+.button {
+    background: var(--purple);
+    border-radius: 12px;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 20px;
+    text-align: center;
+    color: var(--white);
+    padding: 14 25 14 25;
 }
