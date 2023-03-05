@@ -4,6 +4,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Homepage from './pages/Homepage';
+import SeeAllCitiesPage from './pages/SeeAllCitiesPage';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -21,6 +22,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Homepage />} />
+          <Route path="/cities" element={<SeeAllCitiesPage />} />
         </Routes>
         <Contact />
         <Footer />

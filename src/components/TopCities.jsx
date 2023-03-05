@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import CityCard from './CityCard';
 
 function TopCities() {
@@ -33,12 +34,12 @@ function TopCities() {
           <CityCard key={item._id} city={item} />
         ))}
       </div>
-      <button
-        type="button"
+      <Link
+        to="/cities"
         className="text-white bg-uni-purple hover:bg-uni-blue focus:ring-4 focus:ring-uni-gray font-semibold rounded-xl text-sm px-10 py-4 ml-6 h-12 dark:bg-uni-purple dark:hover:bg-uni-blue focus:outline-none dark:focus:ring-uni-grey text-center"
       >
         See All Cities
-      </button>
+      </Link>
     </div>
   );
 }
