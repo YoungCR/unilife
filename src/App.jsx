@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Header from './components/Header';
+import CityDetailsPage from './pages/CityDetailsPage';
 import Homepage from './pages/Homepage';
 import SeeAllCitiesPage from './pages/SeeAllCitiesPage';
 
@@ -23,6 +24,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/cities" element={<SeeAllCitiesPage />} />
+          <Route path="/properties/:cityId" element={<CityDetailsPage />} />
         </Routes>
         <Contact />
         <Footer />
