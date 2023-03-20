@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import PropertyCard from '../components/PropertyCard';
 import SearchBarDetails from '../components/SearchBarDetails';
 import Banner from '../components/Banner';
+import studentsImg from '../assets/students.png';
 
 function CityDetailsPage() {
   const BASEURL = import.meta.env.VITE_UNILIFE_APP_BASE_URL;
@@ -20,11 +21,11 @@ function CityDetailsPage() {
   useEffect(() => {
     // call the api to get property data
     axios
-      .get(`${BASEURL}/properties`)
+      .get(`${BASEURL}/properties/city/${cityId}`)
       .then((res) => {
         console.log(res.data);
         // store data in state
-        setPropertyDetails(res.data.data);
+        setPropertyDetails(res.data.response);
       })
       .catch((err) => console.log(err));
 
@@ -35,7 +36,8 @@ function CityDetailsPage() {
         // console.log(res.data.currentPage)
         console.log(res.data);
         // store data in state
-        setCityDetails(res.data);
+        setCityDetails(res.data.data[0]);
+        console.log(res.data.data[0]);
         //   setCurrentPage(res.data.currentPage)
       })
       .catch((err) => console.log(err));
@@ -49,7 +51,9 @@ function CityDetailsPage() {
       />
       <SearchBarDetails />
       <div className="flex flex-wrap flex-col justify-center items-center">
-        <h2 className="font-medium text-4xl text-center">6 Homes in Leeds</h2>
+        <h2 className="font-medium text-4xl text-center">
+          {cityDetails.property_count} Homes in {cityDetails.name}
+        </h2>
         <div className="grid gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 my-12 mx-20">
           {propertyDetails.map((item) => (
             <PropertyCard key={item._id} property={item} />
@@ -62,20 +66,20 @@ function CityDetailsPage() {
           See All Cities
         </Link>
       </div>
-      <div className="bg-uni-bg-grey rounded-3xl flex justify-center items-center flex-col m-20 py-10 px-14">
-        <div>
-          <h2 className="font-medium text-4xl mt-10 mb-3">
+      <div className="bg-uni-bg-grey rounded-3xl flex justify-center items-center m-20 py-10 px-14">
+        <div className="flex flex-col w-6/12">
+          <h2 className="font-medium text-4xl mt-6 mb-3">
             Being a student in {cityDetails?.name}
           </h2>
-          <p className="font-normal text-xl">
-            Leeds is a lively and multicultural city with a large student
-            population. It is quite a compact city, so it is easy to get around
-            and has a community feel. Leeds is the perfect mix of city and town
-            life and has something to offer to anyone who calls it home. Leeds
-            is home to three universities, the University of Leeds, Leeds
-            Trinity University and Leeds Beckett University
+          <p className="font-normal text-xl mt-6">
+            {cityDetails?.student_life}
           </p>
         </div>
+        <img
+          src={studentsImg}
+          alt="Students sitting on a bench"
+          className="w-6/12 h-5/12 ml-20"
+        />
       </div>
     </>
   );
