@@ -42,7 +42,8 @@ function SeeAllCitiesPage() {
           ) : (
             allCities.map((city) => (
               <Link
-                to={`/cities/${city.id}`}
+                key={city._id}
+                to={`/properties/${city._id}`}
                 className="border-uni-grey border rounded-xl h-24 w-80 hover:bg-uni-purple hover:text-white font-semibold text-2xl flex justify-center items-center"
               >
                 {city.name}
