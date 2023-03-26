@@ -10,7 +10,8 @@ function HomeDetailsPage() {
   const BASEURL = import.meta.env.VITE_UNILIFE_APP_BASE_URL;
 
   const [propertyDetails, setPropertyDetails] = useState();
-  const bedroomPrices = propertyDetails?.bedroom_prices;
+  const [bedroomPrices, setBedroomPrices] = useState();
+  // const bedroomPrices = propertyDetails?.bedroom_prices;
   console.log(bedroomPrices);
   // get property id from url
   const { propertyId } = useParams();
@@ -23,18 +24,23 @@ function HomeDetailsPage() {
         console.log(res);
         // store data in state
         setPropertyDetails(res.data);
+        setBedroomPrices(res.data.bedroom_prices);
         console.log(res.data);
         console.log(propertyDetails);
+        console.log(bedroomPrices);
       })
       .catch((err) => console.log(err));
-  }, [BASEURL, propertyId, propertyDetails]);
+  }, [BASEURL, propertyId, propertyDetails, bedroomPrices]);
 
   return (
-    <div>
-      <div className="flex w-[1440px]">
-        <Link to={`/properties/${propertyDetails?.city_id._id}`}>
+    <div className="flex flex-col items-center">
+      <div className="flex w-[1440px] justify-start px-20 mb-4 mt-14">
+        <Link
+          to={`/properties/${propertyDetails?.city_id._id}`}
+          className="flex items-center"
+        >
           <IoIosArrowBack />
-          <p>Back to Search</p>
+          <p className="ml-4">Back to Search</p>
         </Link>
       </div>
       <div className="flex flex-col items-center">
