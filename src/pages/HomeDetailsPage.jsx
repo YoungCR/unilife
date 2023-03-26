@@ -25,16 +25,20 @@ function HomeDetailsPage() {
         setPropertyDetails(res.data);
         console.log(res.data);
         console.log(propertyDetails);
+        console.log(bedroomPrices);
       })
       .catch((err) => console.log(err));
-  }, [BASEURL, propertyId, propertyDetails]);
+  }, [BASEURL, propertyId, propertyDetails, bedroomPrices]);
 
   return (
-    <div>
-      <div className="flex w-[1440px]">
-        <Link to={`/properties/${propertyDetails?.city_id._id}`}>
+    <div className="flex flex-col items-center">
+      <div className="flex w-[1440px] justify-start px-20 mb-4 mt-14">
+        <Link
+          to={`/properties/${propertyDetails?.city_id._id}`}
+          className="flex items-center"
+        >
           <IoIosArrowBack />
-          <p>Back to Search</p>
+          <p className="ml-4">Back to Search</p>
         </Link>
       </div>
       <div className="flex flex-col items-center">
@@ -50,17 +54,15 @@ function HomeDetailsPage() {
           <div className="flex flex-col w-[620px]">
             <h2 className="text-4xl font-medium">Bedroom Prices</h2>
             <div className="rounded-3xl border border-uni-grey pt-6 mt-6">
-              {Object.values(bedroomPrices).map((item, index) => (
-                <div className="flex justify-between border-b border-uni-grey last:border-b-0 pb-6 mt-6 first:mt-0">
-                  <p className="text-xl font-normal pl-6">
-                    Bedroom {index + 1}
-                  </p>
-                  <p className="text-xl font-normal pr-6">€{item} per week</p>
-                </div>
-              ))}
-              {/* {Object.values(bedroomPrices).map((item, index) =>
-                console.log(index, item)
-              )} */}
+              {bedroomPrices &&
+                Object.values(bedroomPrices).map((item, index) => (
+                  <div className="flex justify-between border-b border-uni-grey last:border-b-0 pb-6 mt-6 first:mt-0">
+                    <p className="text-xl font-normal pl-6">
+                      Bedroom {index + 1}
+                    </p>
+                    <p className="text-xl font-normal pr-6">€{item} per week</p>
+                  </div>
+                ))}
             </div>
           </div>
           <div className="flex flex-col w-[620px] mb-32">
